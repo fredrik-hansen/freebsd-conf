@@ -15,27 +15,27 @@
         
   tasks:
 
-    - name: Show the IP address
+  - name: Show the IP address
         debug:
           msg: "The hostname is {{ inventory_hostname}}  and the IP is {{ansible_default_ipv4.address }}"
-    - name: Install base packages
+  - name: Install base packages
       pkgng:
         name: "{{ base_pkgs }}"
         state: present
 
-    - name: Install desktop packages
+  -  name: Install desktop packages
       pkgng:
         name: "{{ desktop_pkgs }}"
         state: present
 
-    - name: add ansible-pull cron job
+  - name: add ansible-pull cron job
       cron:
         name: ansible auto-provision
         user: "{{ ansible_user }}"
         minute: "*/10"
         job: ansible-pull -o -U https://github.com/fredrik-hansen/freebsd-conf.git > /dev/null 2>&1
 
-    - name: Change shell to bash 
+  - name: Change shell to bash 
       become: yes
       command: "chsh -s /usr/bin/bash {{ username }}"
 
