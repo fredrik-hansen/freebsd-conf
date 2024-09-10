@@ -1,6 +1,6 @@
 ---
 # Author: pki 
-# Version: 0.3  
+# Version: 0.4  
 - hosts: localhost 
   connection: local
   become: true
@@ -38,4 +38,14 @@
      - name: Change shell to bash 
        become: yes
        command: "chsh -s /usr/bin/bash {{ username }}"
+
+     - name: Start on reboot
+       service: name=pf enabled=yes
+     - name: Copy pf.conf
+       copy:
+          src: ../files/pf.conf
+          dest: /etc/pf.conf
+          mode: 0600
+     - name: Start pf now
+       service: name=pf state=started
 
