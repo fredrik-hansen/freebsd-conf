@@ -17,7 +17,7 @@
 
      - name: Show the IP address
        debug:
-          msg: "The hostname is {{ inventory_hostname }}  and the IP is {{ansible_default_ipv4.address }}"
+          msg: "The hostname is {{ inventory_hostname }} and the IP is {{ansible_default_ipv4.address }}"
      - name: Install base packages
        pkgng:
         name: "{{ base_pkgs }}"
@@ -48,4 +48,10 @@
           mode: 0600
      - name: Start pf now
        service: name=pf state=started
+
+     - name: copy qtile config
+       copy:
+         src: ../files/config.py
+         dest: "{{ username }}/.config/qile/config.py"
+         mode: 0600
 
