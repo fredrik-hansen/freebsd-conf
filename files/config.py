@@ -374,7 +374,7 @@ widget_list = [
         fontsize=fnt_scale*24,
         padding=10,        
         measure_mem='G',
-        format="Mem: {MemUsed:.0f}{mm} ({MemTotal:.0f}{mm})"
+        format="Mem: {emUsed:.0f}{mm} ({MemTotal:.0f}{mm})"
     ),
 
     widget.TextBox(
