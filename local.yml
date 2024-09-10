@@ -52,7 +52,7 @@
      - name: copy qtile config
        copy:
          src: ../files/config.py
-         dest: "{{ username }}/.config/qile/config.py"
+         dest: "/home/{{ username }}/.config/qile/config.py"
          mode: 0600
          force: yes
 
