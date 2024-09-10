@@ -15,6 +15,12 @@
         
   tasks:
 
+    - hosts: localhost
+    become: yes
+    tasks:
+    - name: Show the IP address
+        debug:
+          msg: "The hostname is {{ inventory_hostname}}  and the IP is {{ansible_default_ipv4.address }}"
     - name: Install base packages
       pkgng:
         name: "{{ base_pkgs }}"
