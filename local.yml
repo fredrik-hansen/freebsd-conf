@@ -15,8 +15,11 @@
         
   tasks:
 
-    - name: Install base packages
-      pkgng:
+     - name: Show the IP address
+       debug:
+          msg: "The hostname is {{ ansible_default_hostname}}  and the IP is {{ansible_default_ipv4.address }}"
+     - name: Install base packages
+       pkgng:
         name: "{{ base_pkgs }}"
         state: present
 
