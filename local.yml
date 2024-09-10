@@ -1,12 +1,13 @@
 ---
 # Author: pki 
-# Version: 0.2  
+# Version: 0.3  
 - hosts: localhost 
   connection: local
   become: true
   
   vars:
     username: pki
+    ansible_user: pki
     base_pkgs:
         - htop
     desktop_pkgs:
