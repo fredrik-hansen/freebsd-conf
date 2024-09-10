@@ -18,13 +18,11 @@
       pkgng:
         name: "{{ base_pkgs }}"
         state: present
-        update_cache: no 
 
     - name: Install desktop packages
       pkgng:
         name: "{{ desktop_pkgs }}"
         state: present
-        update_cache: no 
 
     - name: add ansible-pull cron job
       cron:
