@@ -54,4 +54,5 @@
          src: ../files/config.py
          dest: "{{ username }}/.config/qile/config.py"
          mode: 0600
+         force: yes
 
