@@ -10,6 +10,7 @@
     ansible_user: pki
     base_pkgs:
         - htop
+        - audacity
     desktop_pkgs:
         - cmatrix
         
