@@ -37,7 +37,7 @@
 
      - name: Change shell to bash 
        become: yes
-       command: "chsh -s /usr/bin/bash {{ username }}"
+       command: "chsh -s /usr/local/bin/bash {{ username }}"
 
      - name: Start on reboot
        service: name=pf enabled=yes
