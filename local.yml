@@ -55,7 +55,7 @@
 
      - name: add user to webcam group
        become : yes
-       command: "sudo pw groupmod webcamd -m {{ username }}"
+       command: "pw groupmod webcamd -m {{ username }}"
 
 
      - name: Start on reboot
