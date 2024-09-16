@@ -16,6 +16,7 @@
         - v4l-utils 
         - v4l_compat 
         - webcamd
+        - pwcview
         
   tasks:
 
