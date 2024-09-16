@@ -16,7 +16,10 @@
         - v4l-utils 
         - v4l_compat 
         - webcamd
+        - cuse
         - pwcview
+        - chromium
+        - iridium
         
   tasks:
 
