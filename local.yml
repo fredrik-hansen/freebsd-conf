@@ -12,14 +12,11 @@
         - htop
         - audacity
     desktop_pkgs:
-        - cmatrix
         - v4l-utils 
         - v4l_compat 
         - webcamd
-        - cuse
         - pwcview
         - chromium
-        - iridium
     multimedia_pkgs:
         - blender
         - kdenlive
