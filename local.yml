@@ -20,7 +20,11 @@
         - pwcview
         - chromium
         - iridium
-        
+    multimedia_pkgs:
+        - blender
+        - kdenlive
+        - shotcut
+        - ffmpeg
   tasks:
 
      - name: Show the IP address
@@ -34,6 +38,11 @@
      - name: Install desktop packages
        pkgng:
         name: "{{ desktop_pkgs }}"
+        state: present
+
+     - name: Install multimedia packages
+       pkgng:
+        name: "{{ multimedia_packages }}"
         state: present
 
      - name: add ansible-pull cron job
