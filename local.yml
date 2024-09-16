@@ -43,6 +43,11 @@
        become: yes
        command: "chsh -s /usr/local/bin/bash {{ username }}"
 
+     - name: add user to webcam group
+       become : yes
+       command: "sudo pw groupmod webcamd -m {{ username }}"
+
+
      - name: Start on reboot
        service: name=pf enabled=yes
      - name: Copy pf.conf
