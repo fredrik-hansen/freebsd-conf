@@ -39,7 +39,7 @@
 
      - name: Install multimedia packages
        pkgng:
-        name: "{{ multimedia_packages }}"
+        name: "{{ multimedia_pkgs }}"
         state: present
 
      - name: add ansible-pull cron job
