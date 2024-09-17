@@ -10,7 +10,6 @@
     ansible_user: pki
     base_pkgs:
         - htop
-        - audacity
         - thefuck
     desktop_pkgs:
         - v4l-utils 
@@ -18,9 +17,9 @@
         - webcamd
         - pwcview
         - chromium
+        - audacity
     multimedia_pkgs:
-        - blender
-        - kdenlive
+        - mpv
         - shotcut
         - ffmpeg
   tasks:
