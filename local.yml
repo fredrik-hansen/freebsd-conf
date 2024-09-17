@@ -1,6 +1,6 @@
 ---
 # Author: pki 
-# Version: 2024-09-16  
+# Version: 2024-09-17  
 - hosts: localhost 
   connection: local
   become: true
@@ -11,6 +11,7 @@
     base_pkgs:
         - htop
         - audacity
+        - thefuck
     desktop_pkgs:
         - v4l-utils 
         - v4l_compat 
