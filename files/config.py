@@ -49,7 +49,7 @@ show_bluetooth = False
 # --------------------------------------------------------
 
 # Font scaling
-fnt_scale = 2
+fnt_scale = 1 
 
 # Get home path
 home = str(Path.home())
@@ -326,10 +326,10 @@ widget_list = [
     
     widget.WindowName(
         **decor_left,
-        max_chars=50,
+        max_chars=150,
         background=Color2+".4",
-        width=1400,
-        fontsize=fnt_scale*24,
+        width=500,
+        fontsize=fnt_scale*18,
         padding=10
     ),
     widget.Spacer(),
@@ -415,7 +415,7 @@ screens = [
     Screen(
         bottom=bar.Bar(
             widget_list,
-            60,
+            30,
             padding=20,
             opacity=0.7,
             border_width=[0, 0, 0, 0],
