@@ -1,6 +1,6 @@
 ---
 # Author: pki 
-# Version: 2024-09-17  
+# Version: 2024-09-25  
 - hosts: localhost 
   connection: local
   become: true
@@ -17,6 +17,7 @@
         - webcamd
         - pwcview
         - chromium
+        - ungoogled-chromium
         - audacity
     multimedia_pkgs:
         - mpv
