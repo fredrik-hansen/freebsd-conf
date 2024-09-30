@@ -16,7 +16,6 @@
         - v4l_compat 
         - webcamd
         - pwcview
-        - chromium
         - ungoogled-chromium
         - audacity
     multimedia_pkgs:
