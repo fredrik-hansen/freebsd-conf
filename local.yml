@@ -1,6 +1,6 @@
 ---
 # Author: pki 
-# Version: 2024-09-25  
+# Version: 2025-01-31
 - hosts: localhost 
   connection: local
   become: true
@@ -46,8 +46,8 @@
        cron:
         name: ansible auto-provision
         user: "{{ ansible_user }}"
-        minute: "*/10"
-        job: ansible-pull -o -U https://github.com/fredrik-hansen/freebsd-conf.git > /dev/null 2>&1
+        minute: "*/5"
+        job: ansible-pull -o -U http://gitlab.dc.int/pki/freebsd-conf.git > /dev/null 2>&1
 
      - name: Change shell to bash 
        become: yes
