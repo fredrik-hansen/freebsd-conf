@@ -1,6 +1,6 @@
 ---
 # Author: pki 
-# Version: 2025-02-04  
+# Version: 1.00 
 - hosts: localhost 
   connection: local
   become: true
@@ -12,16 +12,16 @@
         - htop
         - thefuck
     desktop_pkgs:
-        - v4l-utils 
-        - v4l_compat 
-        - webcamd
-        - pwcview
-        - ungoogled-chromium
-        - audacity
+        #- v4l-utils 
+        #- v4l_compat 
+        #- webcamd
+        #- pwcview
+        #- ungoogled-chromium
+        #- audacity
     multimedia_pkgs:
-        - mpv
-        - shotcut
-        - ffmpeg
+        #- mpv
+        #- shotcut
+        #- ffmpeg
   tasks:
 
      - name: Show the IP address
