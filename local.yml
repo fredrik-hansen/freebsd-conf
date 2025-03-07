@@ -1,6 +1,6 @@
 ---
 # Author: pki 
-# Version: 1.00 
+# Version: 1.01 
 - hosts: localhost 
   connection: local
   become: true
@@ -11,17 +11,19 @@
     base_pkgs:
         - htop
         - thefuck
+        - btop
     desktop_pkgs:
+        - bash
         #- v4l-utils 
         #- v4l_compat 
         #- webcamd
         #- pwcview
         #- ungoogled-chromium
         #- audacity
-    multimedia_pkgs:
         #- mpv
         #- shotcut
         #- ffmpeg
+    
   tasks:
 
      - name: Show the IP address
@@ -37,11 +39,6 @@
         name: "{{ desktop_pkgs }}"
         state: present
 
-     - name: Install multimedia packages
-       pkgng:
-        name: "{{ multimedia_pkgs }}"
-        state: present
-
      - name: add ansible-pull cron job
        cron:
         name: ansible auto-provision
@@ -53,9 +50,9 @@
        become: yes
        command: "chsh -s /usr/local/bin/bash {{ username }}"
 
-     - name: add user to webcam group
-       become : yes
-       command: "pw groupmod webcamd -m {{ username }}"
+ #    - name: add user to webcam group
+ #      become : yes
+ #      command: "pw groupmod webcamd -m {{ username }}"
 
 
      - name: Start on reboot
