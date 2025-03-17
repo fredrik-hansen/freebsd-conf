@@ -10,7 +10,7 @@
   - role: ntpd
   
   vars:
-    fileversion: "1.10"
+    fileversion: "1.11"
     username: pki
     ansible_user: pki
     base_pkgs:
