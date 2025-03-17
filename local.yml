@@ -1,6 +1,6 @@
 ---
 # Author: pki 
-# Version: 1.04
+# Version: 1.05
  
 - hosts: localhost 
   connection: local
@@ -61,12 +61,6 @@
      - name: Start pf now
        service: name=pf state=started
 
-     - name: copy qtile config
-       copy:
-         src: ../files/config.py
-         dest: "/home/{{ username }}/.config/qtile/config.py"
-         mode: 0600
-         force: yes
 
      - name: Disable sendmail
        community.general.sysrc:
