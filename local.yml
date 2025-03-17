@@ -1,6 +1,6 @@
 ---
 # Author: pki 
-# Version: 1.05
+# Version: 1.06
  
 - hosts: localhost 
   connection: local
@@ -58,8 +58,12 @@
           src: ../files/pf.conf
           dest: /etc/pf.conf
           mode: 0600
+
      - name: Start pf now
        service: name=pf state=started
+
+
+
 
 
      - name: Disable sendmail
@@ -69,7 +73,7 @@
 
      - name: Configure OS to use dma
        ansible.builtin.template:
-              src: mailer.conf
+              src: files/dma/template/mailer.conf
               dest: /etc/mail/mailer.conf
               mode: "0644"
 
