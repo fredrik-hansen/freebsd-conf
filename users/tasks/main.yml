@@ -1,0 +1,68 @@
+---
+- name: Install zsh
+  community.general.pkgng:
+    state: present
+    name: zsh
+  tags:
+    - users
+
+- name: Create group
+  ansible.builtin.group:
+    state: present
+    name: "{{ users_create[item].group | default('ops') }}"
+  loop: "{{ users_create.keys() | flatten(levels=1) }}"
+  tags:
+    - users
+
+- name: Create users
+  ansible.builtin.user:
+    name: "{{ item }}"
+    group: "{{ users_create[item].group | default('ops') }}"
+    home: "{{ users_create[item].home | default('/home/' + item) }}"
+    shell: /usr/local/bin/zsh
+  loop: "{{ users_create.keys() | flatten(levels=1) }}"
+  tags:
+    - users
+
+- name: Copy zsh configuration
+  ansible.builtin.copy:
+    src: zshrc
+    dest: "{{ users_create[item].home | default('/home/' + item) }}/.zshrc"
+    owner: "{{ item }}"
+    group: "{{ users_create[item].group | default('ops') }}"
+    mode: "0644"
+  loop: "{{ users_create.keys() | flatten(levels=1) }}"
+  tags:
+    - users
+
+- name: Create .ssh directory
+  ansible.builtin.file:
+    state: directory
+    path: "{{ users_create[item].home | default('/home/' + item) }}/.ssh"
+    owner: "{{ item }}"
+    group: "{{ users_create[item].group | default('ops') }}"
+    mode: "0700"
+  loop: "{{ users_create.keys() | flatten(levels=1) }}"
+  when: users_create[item].ssh_keys is defined
+  tags:
+    - users
+
+- name: Set authorized keys
+  ansible.builtin.copy:
+    content: "{{ users_create[item].ssh_keys }}"
+    dest: "{{ users_create[item].home | default('/home/' + item) }}/.ssh/authorized_keys"
+    owner: "{{ item }}"
+    group: "{{ users_create[item].group | default('ops') }}"
+    mode: "0600"
+  loop: "{{ users_create.keys() | flatten(levels=1) }}"
+  when: users_create[item].ssh_keys is defined
+  tags:
+    - users
+
+- name: Remove users
+  ansible.builtin.user:
+    name: "{{ item }}"
+    state: absent
+  loop: "{{ users_remove }}"
+  tags:
+    - users

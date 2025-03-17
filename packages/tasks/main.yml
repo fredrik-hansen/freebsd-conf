@@ -1,0 +1,32 @@
+---
+
+- name: Check if pkg is setup already
+  ansible.builtin.stat:
+    path: /usr/local/etc/pkg.conf
+  register: pkg_stat
+
+- name: Setup pkg
+  ansible.builtin.command:
+    cmd: pkg -y
+  register: pkg
+  # Bootstrapping pkg always returns with exit code 1
+  when: not pkg_stat.stat.exists
+  failed_when: pkg.rc != 1
+  changed_when: '"Installing" in pkg.stdout'
+
+- name: Install packages
+  community.general.pkgng:
+    state: present
+    # From https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html
+    # When used with a loop: each package will be processed individually,
+    # it is much more efficient to pass the list directly to the name option.
+    name: "{{ packages_install | join(' ') }}"
+    # Just assume someone updates the cache. This is way too slow on freebsd otherwise
+    cached: false
+  when: packages_install != []
+
+- name: Remove packages
+  community.general.pkgng:
+    state: absent
+    name: "{{ packages_remove | join(' ') }}"
+  when: packages_remove != []

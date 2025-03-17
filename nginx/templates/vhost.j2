@@ -1,0 +1,25 @@
+{% set cfg = nginx_vhosts[item] %}
+
+server {
+  listen [::]:8080;
+  listen 8080;
+  absolute_redirect off;
+  server_name {{ cfg.fqdn }};
+
+  # HSTS is set by haproxy (and we have no TLS here)
+  add_header X-Content-Type-Options "nosniff";
+  add_header X-Frame-Options "DENY";
+  add_header X-XSS-Protection "1; mode=block";
+  add_header Referrer-Policy "same-origin";
+{% if cfg.custom_headers is defined %}
+{% for header in cfg.custom_headers %}
+  add_header {{ header }};
+{% endfor %}
+{% endif %}
+
+{% if cfg.custom_config is defined %}
+{{ cfg.custom_config | indent(width=2, first=True) }}
+{% endif %}
+
+  root /usr/local/www/{{ item }};
+}

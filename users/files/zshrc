@@ -1,0 +1,12 @@
+#History setup
+export HISTFILE=~/.zshistory
+export HISTSIZE=10000
+export SAVEHIST=$HISTSIZE
+
+setopt INC_APPEND_HISTORY
+export HISTTIMEFORMAT="[%F %T] "
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+
+## Prompt
+export PROMPT="%n@%m %B%F{default}% %0(?..%? )$ %b%f%k"

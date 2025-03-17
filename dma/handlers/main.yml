@@ -1,0 +1,6 @@
+---
+
+- name: Run newaliases
+  ansible.builtin.command:
+    cmd: /usr/bin/newaliases
+  changed_when: true

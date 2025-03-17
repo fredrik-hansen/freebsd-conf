@@ -1,0 +1,34 @@
+---
+
+# We have no loopback on jails (yet?), so bind to a RFC1918 address
+haproxy_in_jail: true
+
+haproxy_backend_name: habackend
+haproxy_backend_mode: http
+haproxy_backend_balance_method: roundrobin
+haproxy_backend_httpchk: HEAD / HTTP/1.1\r\nHost:localhost
+
+haproxy_listen_port_http: 8080
+haproxy_listen_port_https: 8443
+
+haproxy_tls_enabled: true
+haproxy_cert_dir: /usr/local/etc/ssl/acme.sh
+
+haproxy_redirects: []
+# - name: redirect1
+#   source: redirect1.example.com
+#   target: https://redirect.target.com
+#   code: 301
+haproxy_servers: []
+# - name: app1
+#   fqdn: web1.example.com
+#   address:
+#     - 192.168.0.1:80
+#   healthcheck: |
+#     option httpchk
+#     http-check send hdr User-Agent "haproxy" meth GET uri /
+
+haproxy_global_vars: []
+haproxy_connect_timeout: 5000
+haproxy_client_timeout: 50000
+haproxy_server_timeout: 50000

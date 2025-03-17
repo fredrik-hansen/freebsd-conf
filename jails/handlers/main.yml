@@ -1,0 +1,10 @@
+---
+- name: Restart jails
+  ansible.builtin.service:
+    name: jail
+    state: restarted
+
+- name: Restart devfs
+  ansible.builtin.service:
+    name: devfs
+    state: restarted
