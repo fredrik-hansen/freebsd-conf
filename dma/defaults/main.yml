@@ -1,7 +1,7 @@
 ---
 
 # Smarthost hostname the eMails are sent to.
-dma_smarthost: ""
+dma_smarthost: "smtp.pki.ad"
 
 # Port of smarthost.
 dma_port: 587
