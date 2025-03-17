@@ -10,7 +10,7 @@
   - role: ntpd
   
   vars:
-    fileversion: "1.09"
+    fileversion: "1.10"
     username: pki
     ansible_user: pki
     base_pkgs:
@@ -50,7 +50,7 @@
         name: ansible auto-provision
         user: "{{ ansible_user }}"
         minute: "*/10"
-        job: ansible-pull -o -U https://gitlab.dc.int/pki/freebsd-conf.git > /dev/null 2>&1
+        job: ansible-pull -o -U http://gitlab.dc.int/pki/freebsd-conf.git > /dev/null 2>&1
 
      - name: Change shell to bash 
        become: yes
