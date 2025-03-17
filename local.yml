@@ -1,6 +1,6 @@
 ---
 # Author: pki 
-# Version: 1.06
+# Version: 1.07
  
 - hosts: localhost 
   connection: local
@@ -73,7 +73,7 @@
 
      - name: Configure OS to use dma
        ansible.builtin.template:
-              src: files/dma/template/mailer.conf
+              src: mailer.conf
               dest: /etc/mail/mailer.conf
               mode: "0644"
 
