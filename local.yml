@@ -1,6 +1,6 @@
 ---
 # Author: pki 
-# Version: 1.08
+# 
  
 - hosts: localhost 
   connection: local
@@ -10,6 +10,7 @@
   - role: ntpd
   
   vars:
+    fileversion: "1.09"
     username: pki
     ansible_user: pki
     base_pkgs:
@@ -32,7 +33,8 @@
 
      - name: Show the IP address
        debug:
-          msg: "The hostname is {{ inventory_hostname }} and the IP is {{ansible_default_ipv4.address }}"
+          msg: "The ansible version is {{fileversion}}.\nThe hostname is {{ inventory_hostname }} and the IP is {{ansible_default_ipv4.address }}"
+
      - name: Install base packages
        pkgng:
         name: "{{ base_pkgs }}"
